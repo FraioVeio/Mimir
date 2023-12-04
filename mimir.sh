@@ -38,5 +38,17 @@ while true; do
 
     # Play the audio files without output
     aplay "$FILE1" >/dev/null 2>&1
+
+    # Get the current timestamp
+    NOW=$(date +%s)
+
+    # Calculate elapsed time
+    ELAPSED=$(( NOW - START ))
+
+    # Exit the loop if the specified time has elapsed
+    if [ $ELAPSED -ge $DURATION ]; then
+        break
+    fi
+    # Play the audio files without output
     aplay "$FILE2" >/dev/null 2>&1
 done
