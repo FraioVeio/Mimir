@@ -1,16 +1,16 @@
-# Mimir
+# mimir
 
-Mimir is a command-line tool designed to enhance the traditional `sleep` command, offering an improved user experience with sound effects while your computer is in a sleep state.
+Mimir is a command-line tool designed to enhance the traditional `sleep` command, offering an improved user experience with sound effects while your computer is sleeping.
 
 ## Features
 
 - Replaces the standard `sleep` command with an enriched audio experience.
-- Allows setting a specific duration for the sleep state or an indefinite sleep mode until manually interrupted.
+- Allows setting a specific duration for the sleep or an indefinite sleep mode until manually interrupted.
 - Easy to use, with a simple command-line interface.
 
 ## How to Use
 
-To put your computer to sleep with Mimir, use the following command:
+To put your computer to sleep with mimir, use the following command:
 
 ```bash
 mimir <seconds | inf>
@@ -26,7 +26,7 @@ Examples:
 
 ## Installation
 
-To install Mimir, follow these steps:
+To install mimir, follow these steps:
 
 1. Clone the repository or download the source code.
 2. Navigate to the source directory.
@@ -38,7 +38,7 @@ sudo ./install.sh
 
 ## Uninstallation
 
-To uninstall Mimir, simply run the uninstallation script:
+To uninstall mimir, simply run the uninstallation script:
 
 ```bash
 sudo ./uninstall.sh
