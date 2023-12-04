@@ -21,7 +21,6 @@ function show_help {
 
 # Function to handle Ctrl+C interruption
 function handle_interrupt {
-    echo "Interrupted by user. Exiting."
     exit 1
 }
 
