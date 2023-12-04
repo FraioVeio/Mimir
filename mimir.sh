@@ -1,5 +1,13 @@
-
 #!/bin/bash
+
+# Function to handle Ctrl+C interruption
+function handle_interrupt {
+    # echo "Interrupted by user. Exiting."
+    exit 1
+}
+
+# Trap SIGINT (Ctrl+C) and call the handle_interrupt function
+trap handle_interrupt SIGINT
 
 # Check if an argument has been provided
 if [ "$#" -ne 1 ]; then
@@ -39,16 +47,14 @@ while true; do
     # Play the audio files without output
     aplay "$FILE1" >/dev/null 2>&1
 
-    # Get the current timestamp
+    # Recheck to handle Ctrl+C during aplay execution
     NOW=$(date +%s)
-
-    # Calculate elapsed time
     ELAPSED=$(( NOW - START ))
-
-    # Exit the loop if the specified time has elapsed
     if [ $ELAPSED -ge $DURATION ]; then
         break
     fi
-    # Play the audio files without output
+
     aplay "$FILE2" >/dev/null 2>&1
 done
+
+echo "Completed."
