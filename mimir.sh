@@ -101,6 +101,28 @@ function generate_random_speed {
     done
 }
 
+# Set the maximum delay in seconds (adjust this as needed)
+DELAY_SD=0.5
+
+# Function to generate a random delay using the absolute value of a Gaussian distribution
+function generate_random_delay {
+    local mean=0
+    local sd=$DELAY_SD
+    local u1 u2 z0
+
+    # Read 4 bytes from /dev/urandom and convert them to a float in the range [0,1)
+    u1=$(od -An -N4 -tu4 < /dev/urandom | awk '{print $1 / 4294967296}')
+    u2=$(od -An -N4 -tu4 < /dev/urandom | awk '{print $1 / 4294967296}')
+
+    # Box-Muller transform
+    z0=$(awk -v u1=$u1 -v u2=$u2 'BEGIN {print sqrt(-2 * log(u1)) * cos(2 * atan2(0, -1) * u2)}')
+
+    # Calculate the result and take its absolute value
+    result=$(awk -v z0=$z0 -v mean=$mean -v sd=$sd 'BEGIN {print (z0 * sd + mean) < 0 ? -(z0 * sd + mean) : (z0 * sd + mean)}')
+
+    echo $result
+}
+
 # Loop to play the files until the time has elapsed
 while true; do
     # Generate a random speed using Gaussian distribution
@@ -110,6 +132,9 @@ while true; do
 
     # Play the audio file with the randomized speed
     sox "$FILE1" -d tempo $SPEED >/dev/null 2>&1
+
+    DELAY=$(generate_random_delay)
+    sleep $DELAY
 
     # If not in infinite loop, check the elapsed time
     if [ "$INFINITE_LOOP" = false ]; then
@@ -132,6 +157,9 @@ while true; do
 
     # Play the audio file with the randomized speed
     sox "$FILE2" -d tempo $SPEED >/dev/null 2>&1
+
+    DELAY=$(generate_random_delay)
+    sleep $DELAY
 
     # If not in infinite loop, check the elapsed time
     if [ "$INFINITE_LOOP" = false ]; then
