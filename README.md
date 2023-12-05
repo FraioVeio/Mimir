@@ -26,6 +26,23 @@ Examples:
 - `mimir 60 0.2`: Puts the computer to sleep for 60 seconds with a standard deviation of 0.2 for the speed variation.
 - `mimir inf`: Puts the computer to sleep indefinitely with the default speed variation.
 
+## Dependencies
+
+Before using Mimir, ensure that you have the following dependencies installed on your system:
+
+1. **Bash**: Mimir is a Bash script and requires a Unix-like environment to run. Most Linux distributions and macOS come with Bash pre-installed. For Windows, you can use WSL (Windows Subsystem for Linux).
+
+2. **sox**: The 'sox' command is used for audio playback manipulation. It can be installed on most Unix-like operating systems. 
+
+   - On Ubuntu/Debian: `sudo apt-get install sox`
+   - On Arch: `sudo pacman -S sox`
+   - On Fedora: `sudo dnf install sox`
+   - On macOS (using Homebrew): `brew install sox`
+
+3. **bc**: The 'bc' command is a calculator used within the script. It is typically pre-installed on most Unix-like systems. If it's not installed, you can install it using your system's package manager.
+
+5. **Hardware Compatibility**: The script is designed to run on systems with audio playback capability. Ensure your hardware and drivers support audio playback.
+
 ## Installation
 
 To install mimir, follow these steps:
