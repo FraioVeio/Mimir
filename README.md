@@ -10,19 +10,21 @@ Mimir is a command-line tool designed to enhance the traditional `sleep` command
 
 ## How to Use
 
-To put your computer to sleep with Mimir, use the following command:
+To put your computer to sleep with Mimir and play sound at a variable speed, use the following command:
 
 ```bash
-mimir <seconds | inf>
+mimir <seconds | inf> [standard_deviation]
 ```
 
 - `<seconds>`: Specify the number of seconds for the sleep duration.
 - `inf`: Enter sleep mode indefinitely until manually interrupted.
+- `[standard_deviation]`: (Optional) Specify the standard deviation for the speed variation of the sound playback. If not provided, the default value of 0.1 will be used.
 
 Examples:
 
-- `mimir 60`: Puts the computer to sleep for 60 seconds.
-- `mimir inf`: Puts the computer to sleep indefinitely.
+- `mimir 60`: Puts the computer to sleep for 60 seconds with the default speed variation.
+- `mimir 60 0.2`: Puts the computer to sleep for 60 seconds with a standard deviation of 0.2 for the speed variation.
+- `mimir inf`: Puts the computer to sleep indefinitely with the default speed variation.
 
 ## Installation
 
