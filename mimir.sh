@@ -104,7 +104,7 @@ function generate_random_speed {
 # Loop to play the files until the time has elapsed
 while true; do
     # Generate a random speed using Gaussian distribution
-    SPEED=$(generate_random_speed)
+    SPEED=$(echo "scale=2; 1/$(generate_random_speed)" | bc)
 
     # echo $SPEED
 
@@ -126,7 +126,7 @@ while true; do
     fi
 
     # Generate a random speed again using Gaussian distribution
-    SPEED=$(generate_random_speed)
+    SPEED=$(echo "scale=2; 1/$(generate_random_speed)" | bc)
 
     # echo $SPEED
 
