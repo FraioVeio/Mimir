@@ -131,7 +131,7 @@ while true; do
     # echo $SPEED
 
     # Play the audio file with the randomized speed
-    sox "$FILE1" -d tempo $SPEED >/dev/null 2>&1
+    sox "$FILE1" -d speed $SPEED >/dev/null 2>&1
 
     DELAY=$(generate_random_delay)
     sleep $DELAY
@@ -156,7 +156,7 @@ while true; do
     # echo $SPEED
 
     # Play the audio file with the randomized speed
-    sox "$FILE2" -d tempo $SPEED >/dev/null 2>&1
+    sox "$FILE2" -d speed $SPEED >/dev/null 2>&1
 
     DELAY=$(generate_random_delay)
     sleep $DELAY
